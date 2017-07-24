@@ -16,12 +16,11 @@ GameManager::GameManager()
 	scene->add<Game>(L"Game");
 
 	scene->init(L"Title");
-
 }
 
 GameManager::~GameManager()
 {
-
+	delete(scene);
 }
 
 void GameManager::Run()
@@ -32,6 +31,8 @@ void GameManager::Run()
 		{
 			break;
 		}
+
+		this->Draw();
 	}
 }
 

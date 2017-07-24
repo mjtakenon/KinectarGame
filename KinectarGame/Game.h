@@ -12,4 +12,6 @@ struct Game : SceneManager<String, GameData>::Scene
 	void init();
 
 	void draw() const;
+
+	Font font;
 };

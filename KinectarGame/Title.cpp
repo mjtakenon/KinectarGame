@@ -10,7 +10,6 @@ void Title::update()
 {
 	if (Input::MouseL.clicked)
 	{
-		// 次のシーケンスと、フェードイン・アウトの時間（ミリ秒）
 		changeScene(L"Menu", 500);
 	}
 
@@ -20,5 +19,5 @@ void Title::update()
 
 void Title::draw() const
 {
-
+	//font(L"Title").drawCenter(Window::Center());
 }

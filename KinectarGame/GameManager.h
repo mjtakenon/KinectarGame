@@ -9,8 +9,6 @@
 #include "Menu.h"
 #include "Game.h"
 
-
-
 class GameManager
 {
 public:
@@ -23,8 +21,7 @@ private:
 
 	bool Update();
 	void Draw();
-
-	// シーンのキーの型と、共有データの型を指定
+	
 	using Scenes = SceneManager<String, GameData>;
 	Scenes* scene;
 };
