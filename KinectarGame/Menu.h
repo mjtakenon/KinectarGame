@@ -5,7 +5,7 @@
 
 #include "GameData.h"
 
-struct Menu : SceneManager<String, GameData>
+struct Menu : SceneManager<String, GameData>::Scene
 {
 	void update();
 

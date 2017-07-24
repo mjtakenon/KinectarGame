@@ -5,7 +5,7 @@
 
 #include "GameData.h"
 
-struct Title : SceneManager<String, GameData>
+struct Title : SceneManager<String, GameData>::Scene
 {
 	void init();
 

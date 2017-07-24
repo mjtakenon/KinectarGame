@@ -1,12 +1,12 @@
-#include "GameManager.h"
+#include "Title.h"
 
 
-void GameManager::Title::init()
+void Title::init()
 {
 
 }
 
-void GameManager::Title::update()
+void Title::update()
 {
 	if (Input::MouseL.clicked)
 	{
@@ -18,7 +18,7 @@ void GameManager::Title::update()
 	m_data->t;
 }
 
-void GameManager::Title::draw() const
+void Title::draw() const
 {
 
 }

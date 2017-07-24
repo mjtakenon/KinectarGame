@@ -5,6 +5,12 @@
 
 #include "GameData.h"
 
+#include "Title.h"
+#include "Menu.h"
+#include "Game.h"
+
+
+
 class GameManager
 {
 public:
@@ -21,31 +27,4 @@ private:
 	// シーンのキーの型と、共有データの型を指定
 	using Scenes = SceneManager<String, GameData>;
 	Scenes* scene;
-
-	struct Title : Scenes::Scene
-	{
-		void init() override;
-
-		void update() override;
-
-		void draw() const override;
-	};
-
-	struct Menu : Scenes::Scene
-	{
-		void update() override;
-
-		void init() override;
-
-		void draw() const override;
-	};
-
-	struct Game : Scenes::Scene
-	{
-		void update() override;
-
-		void init() override;
-
-		void draw() const override;
-	};
 };

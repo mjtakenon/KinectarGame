@@ -1,17 +1,17 @@
-#include "GameManager.h"
+#include "Game.h"
 
 
-void GameManager::Game::init()
+void Game::init()
 {
 
 }
 
-void GameManager::Game::update()
+void Game::update()
 {
 
 }
 
-void GameManager::Game::draw() const
+void Game::draw() const
 {
 
 }

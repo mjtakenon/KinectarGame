@@ -284,11 +284,14 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Kinectar\Guitar.h" />
     <ClInclude Include="Kinectar\Kinectar.h" />
     <ClInclude Include="Kinectar\KinectManager.h" />
+    <ClInclude Include="Menu.h" />
+    <ClInclude Include="Title.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
