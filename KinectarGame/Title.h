@@ -12,7 +12,4 @@ struct Title : SceneManager<String, GameData>::Scene
 	void update();
 
 	void draw() const;
-	
-	Font font;
-
 };

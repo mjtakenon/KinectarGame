@@ -7,11 +7,14 @@
 
 struct Game : SceneManager<String, GameData>::Scene
 {
+	void init(); 
+	
 	void update();
-
-	void init();
 
 	void draw() const;
 
-	Font font;
+	
+	int	m_BPM;
+	
+	
 };

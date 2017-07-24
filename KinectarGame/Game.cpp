@@ -3,7 +3,6 @@
 
 void Game::init()
 {
-	font(50);
 }
 
 void Game::update()
@@ -16,5 +15,4 @@ void Game::update()
 
 void Game::draw() const
 {
-	//font(L"Game").drawCenter(Window::Center());
 }

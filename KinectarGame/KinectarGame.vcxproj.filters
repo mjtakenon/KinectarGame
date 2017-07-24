@@ -72,12 +72,30 @@
     <Filter Include="リソース ファイル\Example\Well">
       <UniqueIdentifier>{eb86b9be-05b8-45c6-89c8-f91a5437157c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Kinectar">
-      <UniqueIdentifier>{cc638393-f4ac-4a42-91a6-663c619a70e8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\Kinectar">
+      <UniqueIdentifier>{cc638393-f4ac-4a42-91a6-663c619a70e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scenes">
+      <UniqueIdentifier>{bcb9d9b9-a09e-47ab-b4df-fa9db4e12960}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Kinectar">
+      <UniqueIdentifier>{f6ea65ab-2582-4fca-9737-6d959332bcfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes">
+      <UniqueIdentifier>{62fcf312-ce6e-476d-b639-46d9c861f1c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\Scenes\Game">
+      <UniqueIdentifier>{daeaaeab-6458-4809-b58a-8407f0825349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scenes\Game">
+      <UniqueIdentifier>{87c06c00-623d-4e0c-a21c-a2e7c68e6a22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\misc">
+      <UniqueIdentifier>{45ee0bcb-9605-4579-9658-815250e4b1f3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,25 +103,40 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Kinectar\Guitar.cpp">
-      <Filter>Kinectar</Filter>
+      <Filter>ソース ファイル\Kinectar</Filter>
     </ClCompile>
     <ClCompile Include="Kinectar\Kinectar.cpp">
-      <Filter>Kinectar</Filter>
+      <Filter>ソース ファイル\Kinectar</Filter>
     </ClCompile>
     <ClCompile Include="Kinectar\KinectManager.cpp">
-      <Filter>Kinectar</Filter>
-    </ClCompile>
-    <ClCompile Include="Menu.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="Title.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Kinectar</Filter>
     </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Title.cpp">
+      <Filter>ソース ファイル\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Note.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Base.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="NotesManager.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Bar.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,29 +452,47 @@
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Kinectar\Guitar.h">
-      <Filter>Kinectar</Filter>
-    </ClInclude>
-    <ClInclude Include="Kinectar\Kinectar.h">
-      <Filter>Kinectar</Filter>
-    </ClInclude>
-    <ClInclude Include="Kinectar\KinectManager.h">
-      <Filter>Kinectar</Filter>
-    </ClInclude>
     <ClInclude Include="GameManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="GameData.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Kinectar\Guitar.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>ヘッダー ファイル</Filter>
+    <ClInclude Include="Kinectar\Kinectar.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
+    </ClInclude>
+    <ClInclude Include="Kinectar\KinectManager.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
     </ClInclude>
     <ClInclude Include="Title.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>ヘッダー ファイル\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="Menu.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Base.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Note.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="NotesManager.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>ヘッダー ファイル\misc</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

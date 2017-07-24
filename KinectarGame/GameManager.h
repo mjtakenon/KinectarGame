@@ -21,7 +21,7 @@ private:
 
 	bool Update();
 	void Draw();
-	
+
 	using Scenes = SceneManager<String, GameData>;
 	Scenes* scene;
 };

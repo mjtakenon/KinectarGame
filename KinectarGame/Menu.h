@@ -7,11 +7,9 @@
 
 struct Menu : SceneManager<String, GameData>::Scene
 {
-	void update();
-
 	void init();
 
-	void draw() const;
+	void update();
 
-	Font font;
+	void draw() const;
 };
