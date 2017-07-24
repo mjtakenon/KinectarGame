@@ -138,6 +138,9 @@
     <ClCompile Include="Bar.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Score.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -492,6 +495,9 @@
       <Filter>ヘッダー ファイル\misc</Filter>
     </ClInclude>
     <ClInclude Include="Bar.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Score.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>
