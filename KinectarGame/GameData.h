@@ -3,5 +3,6 @@
 
 struct GameData
 {
-	int32 t;
+	String musicPath;
+	String scorePath;
 };

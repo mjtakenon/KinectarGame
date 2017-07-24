@@ -11,6 +11,8 @@ GameManager::GameManager()
 	scene->add<Game>(L"Game");
 
 	scene->init(L"Game");
+	
+	Window::Resize(1366, 768);
 }
 
 GameManager::~GameManager()
@@ -45,5 +47,6 @@ bool GameManager::Update()
 
 void GameManager::Draw()
 {
+	ClearPrint();
 	scene->draw();
 }

@@ -14,7 +14,7 @@ void Title::update()
 	}
 
 	// 共有データにアクセスできる
-	m_data->t;
+	//m_data->path;
 }
 
 void Title::draw() const

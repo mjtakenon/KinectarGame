@@ -7,9 +7,9 @@
 
 struct Menu : SceneManager<String, GameData>::Scene
 {
-	void init();
+	void init() override;
 
-	void update();
+	void update() override;
 
-	void draw() const;
+	void draw() const override;
 };

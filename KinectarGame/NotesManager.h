@@ -6,25 +6,18 @@
 
 #include "Note.h"
 #include "Bar.h"
-#include "Music.h"
 
 using namespace std;
 
 class NotesManager
 {
 public:
-	NotesManager(String scorePath, String musicPath, double bpm, double blank);
+	NotesManager(list<Note> notes);
 	~NotesManager();
 	
-	void Update(pair<vector<int>,vector<int>> input);
+	void Update(pair<vector<int>,vector<int>> input,const Bar bar);
 	void Draw();
 
 private:
 	list<Note> m_Notes;
-
-	Bar* m_Bar;
-
-	Music* m_Music;
-	Score* m_Score;
-
 };

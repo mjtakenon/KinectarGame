@@ -5,6 +5,7 @@
 
 void Main()
 {
+
 	GameManager* gm = new GameManager();
 	gm->Run();
 

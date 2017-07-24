@@ -7,7 +7,7 @@ class Note : public Object
 {
 public:
 
-	Note(Vec2 position, int string, int flet, Vec2 size, Vec2 speed);
+	Note(Vec2 position, int string, int flet,int time, Vec2 size, Vec2 speed);
 	~Note();
 
 	void Update();
@@ -23,6 +23,7 @@ private:
 
 	int	m_String;
 	int m_Flet;
+	int m_Time;
 
 	Font m_font;
 };

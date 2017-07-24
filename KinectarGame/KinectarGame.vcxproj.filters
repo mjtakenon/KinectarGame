@@ -102,15 +102,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="Kinectar\Guitar.cpp">
-      <Filter>ソース ファイル\Kinectar</Filter>
-    </ClCompile>
-    <ClCompile Include="Kinectar\Kinectar.cpp">
-      <Filter>ソース ファイル\Kinectar</Filter>
-    </ClCompile>
-    <ClCompile Include="Kinectar\KinectManager.cpp">
-      <Filter>ソース ファイル\Kinectar</Filter>
-    </ClCompile>
     <ClCompile Include="GameManager.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -126,9 +117,6 @@
     <ClCompile Include="Note.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Base.cpp">
-      <Filter>ソース ファイル\Scenes\Game</Filter>
-    </ClCompile>
     <ClCompile Include="NotesManager.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
@@ -140,6 +128,15 @@
     </ClCompile>
     <ClCompile Include="Score.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Guitar.cpp">
+      <Filter>ソース ファイル\Kinectar</Filter>
+    </ClCompile>
+    <ClCompile Include="Kinectar.cpp">
+      <Filter>ソース ファイル\Kinectar</Filter>
+    </ClCompile>
+    <ClCompile Include="KinectManager.cpp">
+      <Filter>ソース ファイル\Kinectar</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -458,15 +455,6 @@
     <ClInclude Include="GameManager.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Kinectar\Guitar.h">
-      <Filter>ヘッダー ファイル\Kinectar</Filter>
-    </ClInclude>
-    <ClInclude Include="Kinectar\Kinectar.h">
-      <Filter>ヘッダー ファイル\Kinectar</Filter>
-    </ClInclude>
-    <ClInclude Include="Kinectar\KinectManager.h">
-      <Filter>ヘッダー ファイル\Kinectar</Filter>
-    </ClInclude>
     <ClInclude Include="Title.h">
       <Filter>ヘッダー ファイル\Scenes</Filter>
     </ClInclude>
@@ -478,9 +466,6 @@
     </ClInclude>
     <ClInclude Include="Menu.h">
       <Filter>ヘッダー ファイル\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Base.h">
-      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
     <ClInclude Include="Music.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
@@ -499,6 +484,15 @@
     </ClInclude>
     <ClInclude Include="Score.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="KinectManager.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
+    </ClInclude>
+    <ClInclude Include="Kinectar.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
+    </ClInclude>
+    <ClInclude Include="Guitar.h">
+      <Filter>ヘッダー ファイル\Kinectar</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

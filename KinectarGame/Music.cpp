@@ -1,6 +1,6 @@
 #include "Music.h"
 
-Music::Music(String path, double BPM, double Blank)
+Music::Music(String path, double BPM)
 {
 	this->m_Path = path;
 	this->m_BPM = BPM;

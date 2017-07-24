@@ -163,12 +163,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Bar.cpp" />
-    <ClCompile Include="Base.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="Kinectar\Guitar.cpp" />
-    <ClCompile Include="Kinectar\Kinectar.cpp" />
-    <ClCompile Include="Kinectar\KinectManager.cpp" />
+    <ClCompile Include="Guitar.cpp" />
+    <ClCompile Include="Kinectar.cpp" />
+    <ClCompile Include="KinectManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Music.cpp" />
@@ -291,13 +290,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bar.h" />
-    <ClInclude Include="Base.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="Kinectar\Guitar.h" />
-    <ClInclude Include="Kinectar\Kinectar.h" />
-    <ClInclude Include="Kinectar\KinectManager.h" />
+    <ClInclude Include="Guitar.h" />
+    <ClInclude Include="Kinectar.h" />
+    <ClInclude Include="KinectManager.h" />
     <ClInclude Include="Menu.h" />
     <ClInclude Include="Music.h" />
     <ClInclude Include="Note.h" />
