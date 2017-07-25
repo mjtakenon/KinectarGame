@@ -175,6 +175,7 @@
     <ClCompile Include="Music.cpp" />
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="NotesManager.cpp" />
+    <ClCompile Include="PointManager.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
@@ -271,6 +272,7 @@
     <ClInclude Include="Note.h" />
     <ClInclude Include="NotesManager.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PointManager.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Title.h" />
   </ItemGroup>

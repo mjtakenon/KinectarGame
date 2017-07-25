@@ -135,6 +135,9 @@
     <ClCompile Include="HitEffect.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="PointManager.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -401,6 +404,9 @@
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
     <ClInclude Include="HitEffect.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="PointManager.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>

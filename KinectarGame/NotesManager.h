@@ -7,6 +7,7 @@
 #include "Note.h"
 #include "Bar.h"
 #include "HitEffect.h"
+#include "PointManager.h"
 
 using namespace std;
 
@@ -16,7 +17,7 @@ public:
 	NotesManager(list<Note> notes,vector<Bar> bars, int samplingRate);
 	~NotesManager();
 	
-	void Update(vector<int> input, vector<vector<bool>> pushed, int sample);
+	void Update(vector<int> input, vector<vector<bool>> pushed, int sample, PointManager* pointmanager);
 	void Draw();
 
 private:
@@ -25,7 +26,6 @@ private:
 	vector<Bar> m_Bars;
 
 	list<HitEffect> m_HitEffects;
-
 
 	int m_SamplingRate;
 

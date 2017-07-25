@@ -37,7 +37,7 @@ NotesManager::~NotesManager()
 
 }
 
-void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sample)
+void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sample, PointManager* pm)
 {
 	//inputからNotesの探索、適切なノーツの削除、新しいノーツの出現とか
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
@@ -49,6 +49,7 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 		if (itr->getPosition().x <= 0 && itr->isVisible())
 		{
 			itr = m_Notes.erase(itr);
+			pm->addLost();
 			continue;
 		}
 		itr++;
@@ -102,19 +103,20 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 				if (diffSample <= m_PerfectSample && diffSample >= -m_PerfectSample) //Perfect
 				{
 					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Yellow));
+					pm->addPerfect();
 				}
 				else if (diffSample <= m_GoodSample && diffSample >= -m_GoodSample) //Good
 				{
 					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Green));
+					pm->addGood();
 				}
 				else //Hit
 				{
 					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Blue));
+					pm->addHit();
 				}
 				
 				itr = m_Notes.erase(itr);
-
-
 			}
 		}
 	}

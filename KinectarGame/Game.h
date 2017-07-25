@@ -10,6 +10,7 @@
 #include "Music.h"
 #include "Score.h"
 #include "NotesManager.h"
+#include "PointManager.h"
 #include "Kinectar.h"
 
 struct Game : SceneManager<String, GameData>::Scene
@@ -21,9 +22,12 @@ struct Game : SceneManager<String, GameData>::Scene
 	void draw() const override;
 
 	NotesManager*	m_NotesManager;
-	
+	PointManager* m_PointManager;
+
 	vector<Bar>	m_Bars;
 	vector<GuitarString> m_GuitarStrings;
+
+	int m_StringMargin;
 
 	Music*	m_Music;
 	Score*	m_Score;
@@ -32,4 +36,6 @@ struct Game : SceneManager<String, GameData>::Scene
 
 	Vec2 m_BarSize;
 	Vec2 m_BarPosition;
+
+	Vec2 m_EndLine;
 };

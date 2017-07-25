@@ -18,11 +18,6 @@ Music::~Music()
 
 }
 
-/*double Music::getPlayingPosition()
-{
-	return (m_Sound->streamPosSample()/m_Sound->samplingRate());
-}*/
-
 int Music::getPlayingSample()
 {
 	return static_cast<int32>(m_Sound->streamPosSample());

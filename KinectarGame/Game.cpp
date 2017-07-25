@@ -8,6 +8,8 @@ void Game::init()
 	
 	m_data->string = 6;
 	m_data->flet = 5;
+
+	m_StringMargin = 5;
 	
 	m_BarSize = Vec2(20,250);
 	m_BarPosition = Vec2(100, 100);
@@ -17,7 +19,7 @@ void Game::init()
 	m_Bars = vector<Bar>();
 	for (auto n = 0; n < m_data->string; n++)
 	{
-		Vec2 pos = Vec2(m_BarPosition.x, m_BarPosition.y + (m_BarSize.y / m_data->string) * n + n*5);
+		Vec2 pos = Vec2(m_BarPosition.x, m_BarPosition.y + (m_BarSize.y / m_data->string) * n + n*m_StringMargin);
 		Vec2 size = Vec2(m_BarSize.x, m_BarSize.y / m_data->string);
 		m_Bars.push_back(Bar(pos, size, Palette::White));
 	}
@@ -26,7 +28,7 @@ void Game::init()
 
 	for (auto n = 0; n < m_data->string; n++)
 	{
-		Vec2 pos = Vec2(0, m_Bars[n].getPosition().y);
+		Vec2 pos = Vec2(10, m_Bars[n].getPosition().y);
 		Vec2 size = Vec2(Window::Width(), 2);
 		m_GuitarStrings.push_back(GuitarString(pos, size, Palette::White));
 	}
@@ -35,6 +37,11 @@ void Game::init()
 	m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
 	
 	m_NotesManager = new NotesManager(m_Score->getNotes(), m_Bars, m_Music->getSamplingRate());
+
+	m_PointManager = new PointManager();
+
+	m_EndLine = Vec2(m_GuitarStrings.begin()->getPosition());
+
 }
 
 void Game::update()
@@ -63,15 +70,19 @@ void Game::update()
 		m_GuitarStrings[n].Update(m_Kinectar->getSoundTime()[n]);
 	}
 
-	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Kinectar->getPushedState(), m_Music->getPlayingSample());
-
+	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Kinectar->getPushedState(), m_Music->getPlayingSample(), m_PointManager);
+	m_PointManager->Update();
 }
 
 void Game::draw() const
 {
-	Println(m_Kinectar->getSoundTime());
-	Println(m_Kinectar->getPushedState());
+	//Println(m_Kinectar->getSoundTime());
+	//Println(m_Kinectar->getPushedState());
 	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
+
+	//endline
+	Rect(m_EndLine.x, m_EndLine.y, 5, (m_BarSize.y / m_data->string) * (m_data->string-1) + (m_data->string-1) * m_StringMargin).draw(Palette::White);
+	Rect(m_EndLine.x+10, m_EndLine.y, 2, (m_BarSize.y / m_data->string) * (m_data->string - 1) + (m_data->string - 1) * m_StringMargin).draw(Palette::White);
 
 	for (auto n = 0; n < m_Bars.size(); n++)
 	{
@@ -84,4 +95,5 @@ void Game::draw() const
 	}
 
 	m_NotesManager->Draw();
+	m_PointManager->Draw();
 }
