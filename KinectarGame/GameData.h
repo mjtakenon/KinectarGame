@@ -5,4 +5,7 @@ struct GameData
 {
 	String musicPath;
 	String scorePath;
+
+	int string;
+	int flet;
 };

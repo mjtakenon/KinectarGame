@@ -20,10 +20,13 @@ struct Game : SceneManager<String, GameData>::Scene
 	void draw() const override;
 
 	NotesManager*	m_NotesManager;
-	Bar*	m_Bar;
+	vector<Bar>	m_Bars;
 
 	Music*	m_Music;
 	Score*	m_Score;
 
 	Kinectar* m_Kinectar;
+
+	Vec2 m_BarSize;
+	Vec2 m_BarPosition;
 };

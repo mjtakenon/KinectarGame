@@ -7,7 +7,7 @@ Note::Note(Vec2 position, int string, int flet,int sample, Vec2 size, Vec2 speed
 	m_Sample = sample;
 	m_Size = size;
 	m_Speed = speed;
-	m_font((size.x+size.y/2));
+	m_font((size.x+size.y) / 2);
 
 	m_isEnable = false;
 	m_isVisible = false;

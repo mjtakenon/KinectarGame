@@ -20,6 +20,7 @@ public:
 	void Draw();
 
 	pair<vector<int>,vector<int>> getButtonState();
+	vector<vector<bool>> getPushedState() { return buttonState; };
 
 
 private:

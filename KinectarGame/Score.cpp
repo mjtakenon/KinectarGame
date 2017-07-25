@@ -42,7 +42,7 @@ Score::Score(String path,int SamplingRate)
 					sample += Parse<int>(part[2]) * (60 / m_BPM * SamplingRate) / 2000;
 					
 					part = line.split(':')[1].split(',');
-					string = Parse<int>(part[0]);
+					string = Parse<int>(part[0])-1;
 					flet = Parse<int>(part[1]);
 
 					m_Notes.push_back(Note(Vec2(0,0), string, flet, sample, Vec2(0,0), Vec2(0,0)));
