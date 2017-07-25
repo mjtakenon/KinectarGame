@@ -20,6 +20,7 @@ public:
 
 	Vec2 getSize() { return m_Size; };
 	Vec2 getSpeed() { return m_Speed; };
+	int	 getSample() { return m_Sample; };
 
 	void setPosition(Vec2 position) { m_Position = position; };
 	void setSize(Vec2 size) { m_Size = size; };

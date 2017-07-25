@@ -270,7 +270,20 @@ void Kinectar::playSound()
 	vector<vector<double>> handAngles = m_KinectManager->getHandAngle();
 	//Ç∆ÇËÇ†Ç¶Ç∏0êlñ⁄ÇÃ
 	for (int body = 0; body < 6; body++)
+	{
+		for (int i = 0; i < fletMax; i++)
 		{
+			if (soundTime[i] > 0)
+			{
+				soundTime[i]++;
+			}
+
+			if (soundTime[i] >= 128)
+			{
+				Midi::SendMessage(MidiMessage::NoteOff(midiCh, playingPitch[i]));
+				soundTime[i] = 0;
+			}
+		}
 
 		vector<double> ha = handAngles[body];
 	
@@ -322,24 +335,6 @@ void Kinectar::playSound()
 			}
 		}
 
-		for (int i = 0; i < fletMax; i++)
-		{
-			if (soundTime[i] > 0)
-			{
-				soundTime[i]++;
-			}
-
-			if (soundTime[i] >= 128)
-			{
-				Midi::SendMessage(MidiMessage::NoteOff(midiCh, playingPitch[i]));
-				soundTime[i] = 0;
-			}
-		}
 	}
 }
 
-
-pair<vector<int>,vector<int>> Kinectar::getButtonState()
-{
-	return make_pair(this->soundTime, this->playingPitch);
-}

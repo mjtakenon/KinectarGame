@@ -167,6 +167,7 @@
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="Guitar.cpp" />
     <ClCompile Include="GuitarString.cpp" />
+    <ClCompile Include="HitEffect.cpp" />
     <ClCompile Include="Kinectar.cpp" />
     <ClCompile Include="KinectManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -262,6 +263,7 @@
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="Guitar.h" />
     <ClInclude Include="GuitarString.h" />
+    <ClInclude Include="HitEffect.h" />
     <ClInclude Include="Kinectar.h" />
     <ClInclude Include="KinectManager.h" />
     <ClInclude Include="Menu.h" />

@@ -60,16 +60,16 @@ void Game::update()
 
 	for (auto n = 0; n < m_GuitarStrings.size(); n++)
 	{
-		m_GuitarStrings[n].Update(m_Kinectar->getButtonState().first[n]);
+		m_GuitarStrings[n].Update(m_Kinectar->getSoundTime()[n]);
 	}
 
-	m_NotesManager->Update(m_Kinectar->getButtonState(), m_Music->getPlayingSample());
+	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Music->getPlayingSample());
 
 }
 
 void Game::draw() const
 {
-	Println(m_Kinectar->getButtonState().first, m_Kinectar->getButtonState().second);
+	Println(m_Kinectar->getSoundTime());
 	Println(m_Kinectar->getPushedState());
 	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
 

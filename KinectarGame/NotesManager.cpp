@@ -6,14 +6,19 @@ NotesManager::NotesManager(list<Note> notes, vector<Bar> bars, int samplingRate)
 	m_Bars = bars;
 	m_SamplingRate = samplingRate;
 
-	double prepareTime = 5;
-	double visibleTime = prepareTime;
-	double hitTime = 1;
+	double visibleTime = 5;
 	
-	m_PrepareFrame = 60 * prepareTime;
+	double hitTime = 0.5;
+	double goodTime = 0.3;
+	double perfectTime = 0.1;
+	
+	m_VisibleFrame = 60 * visibleTime;
 	
 	m_VisibleSample = m_SamplingRate * visibleTime;
+
 	m_HitSample = m_SamplingRate * hitTime;
+	m_GoodSample = m_SamplingRate * goodTime;
+	m_PerfectSample = m_SamplingRate * perfectTime;
 
 	
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end(); itr++)
@@ -21,7 +26,7 @@ NotesManager::NotesManager(list<Note> notes, vector<Bar> bars, int samplingRate)
 		itr->setSize(Vec2(20, 15));
 		itr->setSpeed(Vec2(5, 0));
 
-		itr->setPosition(Vec2(m_Bars[itr->getString()].getPosition().x + m_PrepareFrame*itr->getSpeed().x , m_Bars[itr->getString()].getPosition().y));
+		itr->setPosition(Vec2(m_Bars[itr->getString()].getPosition().x + m_VisibleFrame*itr->getSpeed().x , m_Bars[itr->getString()].getPosition().y));
 	}
 }
 
@@ -30,7 +35,7 @@ NotesManager::~NotesManager()
 
 }
 
-void NotesManager::Update(pair<vector<int>,vector<int>> input, int sample)
+void NotesManager::Update(vector<int> input, int sample)
 {
 	//inputからNotesの探索、適切なノーツの削除、新しいノーツの出現とか
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
@@ -47,7 +52,48 @@ void NotesManager::Update(pair<vector<int>,vector<int>> input, int sample)
 		itr++;
 	}
 
-	Println(input.first, input.second);
+	//当たり判定
+	for (auto n = 0; n < input.size(); n++)
+	{
+		if (input[n] == 1)
+		{
+			for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
+			{
+				if (itr->getString() != n)
+				{
+					itr++;
+					continue;
+				}
+
+				int diffSample = itr->getSample() - sample;
+
+				if (diffSample > m_HitSample)
+				{
+					itr++;
+					continue;
+				}
+				
+				if (diffSample <= m_PerfectSample) //Perfect
+				{
+					
+				}
+				else if (diffSample <= m_GoodSample) //Good
+				{
+
+				}
+				else //Hit
+				{
+
+				}
+				
+				itr = m_Notes.erase(itr);
+
+
+			}
+		}
+	}
+
+	Println(input);
 }
 
 void NotesManager::Draw()

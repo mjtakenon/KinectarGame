@@ -19,7 +19,7 @@ public:
 	void Update();
 	void Draw();
 
-	pair<vector<int>,vector<int>> getButtonState();
+	vector<int> getSoundTime() { return soundTime; };
 	vector<vector<bool>> getPushedState() { return buttonState; };
 
 
