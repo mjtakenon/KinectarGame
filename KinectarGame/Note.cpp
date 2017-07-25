@@ -40,7 +40,7 @@ Note::~Note()
 
 }
 
-void Note::Update(double sample, int samplingRate, Vec2 barPosition, int hitSample, int visibleSample)
+void Note::Update(double sample, int samplingRate, Vec2 hitMarkerPosition, int hitSample, int visibleSample)
 {
 	//Visible‚Å•\Ž¦
 	//Enable‚Åhit‰Â”\
@@ -60,7 +60,7 @@ void Note::Update(double sample, int samplingRate, Vec2 barPosition, int hitSamp
 		return;
 	}
 
-	m_Position.x = barPosition.x + (m_Speed.x*((m_Sample - sample) / samplingRate * 60));
+	m_Position.x = hitMarkerPosition.x + (m_Speed.x*((m_Sample - sample) / samplingRate * 60));
 }
 
 void Note::Draw()
@@ -72,5 +72,6 @@ void Note::Draw()
 
 	Ellipse(m_Position, m_Size).draw(m_Color);
 	m_font(m_Flet).drawCenter(m_Position, Palette::Black);
+	Ellipse(m_Position, m_Size).drawFrame(0,2,Palette::Black);
 }
 

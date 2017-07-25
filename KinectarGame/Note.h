@@ -2,7 +2,7 @@
 
 #include <Siv3D.hpp>
 
-#include "Bar.h"
+#include "HitMarker.h"
 #include "Object.h"
 
 class Note : public Object
@@ -12,7 +12,7 @@ public:
 	Note(Vec2 position, int string, int flet,int sample, Vec2 size, Vec2 speed);
 	~Note();
 
-	void Update(double sample, int samplingRate, Vec2 barPosition, int hitSample, int visibleSample);
+	void Update(double sample, int samplingRate, Vec2 hitMarkerPosition, int hitSample, int visibleSample);
 	void Draw();
 	
 	int getString() { return m_String; };

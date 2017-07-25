@@ -6,12 +6,11 @@
 
 using namespace std;
 
-class Bar : public Object
+class HitMarker : public Object
 {
 public:
-
-	Bar(Vec2 position, Vec2 size, Color color);
-	~Bar();
+	HitMarker(Vec2 position, Vec2 size, Color color);
+	~HitMarker();
 
 	void Update(vector<bool> buttonState);
 	void Draw() const;

@@ -1,9 +1,9 @@
 #include "NotesManager.h"
 
-NotesManager::NotesManager(list<Note> notes, vector<Bar> bars, int samplingRate)
+NotesManager::NotesManager(list<Note> notes, vector<HitMarker> HitMarkers, int samplingRate)
 {
 	m_Notes = notes;
-	m_Bars = bars;
+	m_HitMarkers = HitMarkers;
 	m_SamplingRate = samplingRate;
 
 	double visibleTime = 5;
@@ -19,14 +19,13 @@ NotesManager::NotesManager(list<Note> notes, vector<Bar> bars, int samplingRate)
 	m_HitSample = m_SamplingRate * hitTime;
 	m_GoodSample = m_SamplingRate * goodTime;
 	m_PerfectSample = m_SamplingRate * perfectTime;
-
 	
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end(); itr++)
 	{
 		itr->setSize(Vec2(20, 15));
 		itr->setSpeed(Vec2(5, 0));
 
-		itr->setPosition(Vec2(m_Bars[itr->getString()].getPosition().x + m_VisibleFrame*itr->getSpeed().x , m_Bars[itr->getString()].getPosition().y));
+		itr->setPosition(Vec2(m_HitMarkers[itr->getString()].getPosition().x + m_VisibleFrame*itr->getSpeed().x , m_HitMarkers[itr->getString()].getPosition().y));
 	}
 
 	m_HitEffects = list<HitEffect>();
@@ -43,7 +42,7 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
 	{
 		//oŒ»‚ÆˆÚ“®
-		itr->Update(sample, m_SamplingRate, m_Bars[itr->getString()].getPosition(), m_HitSample, m_VisibleSample);
+		itr->Update(sample, m_SamplingRate, m_HitMarkers[itr->getString()].getPosition(), m_HitSample, m_VisibleSample);
 
 		//list‚Ì—v‘fíœ
 		if (itr->getPosition().x <= 0 && itr->isVisible())
@@ -75,7 +74,7 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 		for (auto m = 0; m < pushed[n].size(); m++)
 		if (pushed[n][m])
 		{
-			pushedFlet[n] = m;
+			pushedFlet[m] = n + 1;
 		}
 	}
 
@@ -102,17 +101,17 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 				
 				if (diffSample <= m_PerfectSample && diffSample >= -m_PerfectSample) //Perfect
 				{
-					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Yellow));
+					m_HitEffects.push_back(HitEffect(m_HitMarkers[n].getPosition(), Vec2(100, m_HitMarkers[n].getSize().y), Palette::Yellow));
 					pm->addPerfect();
 				}
 				else if (diffSample <= m_GoodSample && diffSample >= -m_GoodSample) //Good
 				{
-					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Green));
+					m_HitEffects.push_back(HitEffect(m_HitMarkers[n].getPosition(), Vec2(100, m_HitMarkers[n].getSize().y), Palette::Green));
 					pm->addGood();
 				}
 				else //Hit
 				{
-					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Blue));
+					m_HitEffects.push_back(HitEffect(m_HitMarkers[n].getPosition(), Vec2(100, m_HitMarkers[n].getSize().y), Palette::Blue));
 					pm->addHit();
 				}
 				

@@ -5,7 +5,7 @@
 
 #include "GameData.h"
 
-#include "Bar.h"
+#include "HitMarker.h"
 #include "GuitarString.h"
 #include "Music.h"
 #include "Score.h"
@@ -24,7 +24,7 @@ struct Game : SceneManager<String, GameData>::Scene
 	NotesManager*	m_NotesManager;
 	PointManager* m_PointManager;
 
-	vector<Bar>	m_Bars;
+	vector<HitMarker>	m_HitMarkers;
 	vector<GuitarString> m_GuitarStrings;
 
 	int m_StringMargin;
@@ -34,8 +34,8 @@ struct Game : SceneManager<String, GameData>::Scene
 
 	Kinectar* m_Kinectar;
 
-	Vec2 m_BarSize;
-	Vec2 m_BarPosition;
+	Vec2 m_HitMarkerSize;
+	Vec2 m_HitMarkerPosition;
 
 	Vec2 m_EndLine;
 };

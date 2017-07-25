@@ -1,17 +1,17 @@
-#include "Bar.h"
+#include "HitMarker.h"
 
-Bar::Bar(Vec2 position, Vec2 size, Color color) : Object(position)
+HitMarker::HitMarker(Vec2 position, Vec2 size, Color color) : Object(position)
 {
 	this->m_Size = size;
 	this->m_Color = color;
 }
 
-Bar::~Bar()
+HitMarker::~HitMarker()
 {
 
 }
 
-void Bar::Update(vector<bool> buttonState)
+void HitMarker::Update(vector<bool> buttonState)
 {
 	int state = 0;
 
@@ -50,7 +50,7 @@ void Bar::Update(vector<bool> buttonState)
 
 }
 
-void Bar::Draw() const
+void HitMarker::Draw() const
 {
 	Rect(m_Position.x - (m_Size.x / 2), m_Position.y - (m_Size.y / 2), m_Size.x, m_Size.y).draw(m_Color);
 	Rect(m_Position.x, m_Position.y - (m_Size.y / 2), 1, m_Size.y).draw(Palette::Red);

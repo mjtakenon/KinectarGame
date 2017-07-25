@@ -139,11 +139,11 @@ void Kinectar::Update()
 
 void Kinectar::Draw()
 {
-	ClearPrint();
+	//ClearPrint();
 	
 	m_KinectManager->Draw(soundTime, fletAngle);
 
-	drawGuitar();
+	//drawGuitar();
 	
 	//Print(soundTime, L"\n");
 }
@@ -268,23 +268,24 @@ void Kinectar::playSound()
 	double prevHandAngle;
 
 	vector<vector<double>> handAngles = m_KinectManager->getHandAngle();
-	//Ç∆ÇËÇ†Ç¶Ç∏0êlñ⁄ÇÃ
-	for (int body = 0; body < 6; body++)
-	{
-		for (int i = 0; i < fletMax; i++)
-		{
-			if (soundTime[i] > 0)
-			{
-				soundTime[i]++;
-			}
 
-			if (soundTime[i] >= 128)
-			{
-				Midi::SendMessage(MidiMessage::NoteOff(midiCh, playingPitch[i]));
-				soundTime[i] = 0;
-			}
+	for (int i = 0; i < fletMax; i++)
+	{
+		if (soundTime[i] > 0)
+		{
+			soundTime[i]++;
 		}
 
+		if (soundTime[i] >= 128)
+		{
+			Midi::SendMessage(MidiMessage::NoteOff(midiCh, playingPitch[i]));
+			soundTime[i] = 0;
+		}
+	}
+
+	//Ç∆ÇËÇ†Ç¶Ç∏ëSàıï™Ç∆Ç¡ÇøÇ·Ç§Ç©
+	for (int body = 0; body < 6; body++)
+	{
 		vector<double> ha = handAngles[body];
 	
 		if (Abs(m_KinectManager->getHandDiff()[body]) > 0.35)
@@ -294,10 +295,7 @@ void Kinectar::playSound()
 
 		if (ha.size() >= 2)
 		{
-			//currentHandAngle = m_KinectManager->getHandAngle().at(m_KinectManager->getHandAngle().size() - 1);
-			//prevHandAngle = m_KinectManager->getHandAngle().at(m_KinectManager->getHandAngle().size() - 2);
 			currentHandAngle = ha[ha.size()-1];
-
 			prevHandAngle = ha[ha.size() - 2];
 		}
 		else
@@ -331,6 +329,14 @@ void Kinectar::playSound()
 				}
 
 				Midi::SendMessage(MidiMessage::NoteOn(midiCh, pitchTable[playingPitch[i]]));
+				soundTime[i] = 1;
+			}
+		}
+
+		if (Input::Key0.clicked)
+		{
+			for (int i = 0; i < fletMax; i++)
+			{
 				soundTime[i] = 1;
 			}
 		}

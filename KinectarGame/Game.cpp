@@ -11,24 +11,24 @@ void Game::init()
 
 	m_StringMargin = 5;
 	
-	m_BarSize = Vec2(20,250);
-	m_BarPosition = Vec2(100, 100);
+	m_HitMarkerSize = Vec2(20,250);
+	m_HitMarkerPosition = Vec2(100, 100);
 
 	m_Kinectar = new Kinectar();
 
-	m_Bars = vector<Bar>();
+	m_HitMarkers = vector<HitMarker>();
 	for (auto n = 0; n < m_data->string; n++)
 	{
-		Vec2 pos = Vec2(m_BarPosition.x, m_BarPosition.y + (m_BarSize.y / m_data->string) * n + n*m_StringMargin);
-		Vec2 size = Vec2(m_BarSize.x, m_BarSize.y / m_data->string);
-		m_Bars.push_back(Bar(pos, size, Palette::White));
+		Vec2 pos = Vec2(m_HitMarkerPosition.x, m_HitMarkerPosition.y + (m_HitMarkerSize.y / m_data->string) * n + n*m_StringMargin);
+		Vec2 size = Vec2(m_HitMarkerSize.x, m_HitMarkerSize.y / m_data->string);
+		m_HitMarkers.push_back(HitMarker(pos, size, Palette::White));
 	}
 	
 	m_GuitarStrings = vector<GuitarString>();
 
 	for (auto n = 0; n < m_data->string; n++)
 	{
-		Vec2 pos = Vec2(10, m_Bars[n].getPosition().y);
+		Vec2 pos = Vec2(10, m_HitMarkers[n].getPosition().y);
 		Vec2 size = Vec2(Window::Width(), 2);
 		m_GuitarStrings.push_back(GuitarString(pos, size, Palette::White));
 	}
@@ -36,7 +36,7 @@ void Game::init()
 	m_Music = new Music(m_data->musicPath);
 	m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
 	
-	m_NotesManager = new NotesManager(m_Score->getNotes(), m_Bars, m_Music->getSamplingRate());
+	m_NotesManager = new NotesManager(m_Score->getNotes(), m_HitMarkers, m_Music->getSamplingRate());
 
 	m_PointManager = new PointManager();
 
@@ -55,14 +55,14 @@ void Game::update()
 	m_Kinectar->Update();
 	
 	vector<vector<bool>> states = m_Kinectar->getPushedState();
-	for (auto n = 0; n < m_Bars.size(); n++)
+	for (auto n = 0; n < m_HitMarkers.size(); n++)
 	{
 		vector<bool> state = vector<bool>(5);
 		for (auto m = 0; m < state.size(); m++)
 		{
 			state[m] = states[m][n];
 		}
-		m_Bars[n].Update(state);
+		m_HitMarkers[n].Update(state);
 	}
 
 	for (auto n = 0; n < m_GuitarStrings.size(); n++)
@@ -76,17 +76,17 @@ void Game::update()
 
 void Game::draw() const
 {
-	//Println(m_Kinectar->getSoundTime());
-	//Println(m_Kinectar->getPushedState());
 	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
 
-	//endline
-	Rect(m_EndLine.x, m_EndLine.y, 5, (m_BarSize.y / m_data->string) * (m_data->string-1) + (m_data->string-1) * m_StringMargin).draw(Palette::White);
-	Rect(m_EndLine.x+10, m_EndLine.y, 2, (m_BarSize.y / m_data->string) * (m_data->string - 1) + (m_data->string - 1) * m_StringMargin).draw(Palette::White);
+	m_Kinectar->Draw();
 
-	for (auto n = 0; n < m_Bars.size(); n++)
+	//endline
+	Rect(m_EndLine.x, m_EndLine.y, 5, (m_HitMarkerSize.y / m_data->string) * (m_data->string-1) + (m_data->string-1) * m_StringMargin).draw(Palette::White);
+	Rect(m_EndLine.x+10, m_EndLine.y, 2, (m_HitMarkerSize.y / m_data->string) * (m_data->string - 1) + (m_data->string - 1) * m_StringMargin).draw(Palette::White);
+
+	for (auto n = 0; n < m_HitMarkers.size(); n++)
 	{
-		m_Bars[n].Draw();
+		m_HitMarkers[n].Draw();
 	}
 
 	for (auto n = 0; n < m_GuitarStrings.size(); n++)
@@ -94,6 +94,6 @@ void Game::draw() const
 		m_GuitarStrings[n].Draw();
 	}
 
-	m_NotesManager->Draw();
 	m_PointManager->Draw();
+	m_NotesManager->Draw();
 }

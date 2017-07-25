@@ -12,8 +12,8 @@ KinectManager::KinectManager(int fletMax)
 
 	handAngle = vector<vector<double>>(6);
 
-	depthDrawPos = Vec2(0, 320);
-	colorDrawPos = Vec2(512, 320);
+	depthDrawPos = Vec2(0, Window::Height()/2);
+	colorDrawPos = Vec2(512, Window::Height() / 2);
 }
 
 KinectManager::~KinectManager()
@@ -42,8 +42,6 @@ void KinectManager::Update()
 	{
 		KinectV2::GetBodyFrame(bodies);
 	}
-
-
 
 	for (int body = 0; body < 6; body++)
 	{
@@ -79,9 +77,9 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 {
 	depthTexture.draw(depthDrawPos);
 	
-	//colorTexture.resize(960,540).draw(colorDrawPos);
-	colorTexture.draw(colorDrawPos);
-
+	colorTexture.resize(682,384).draw(colorDrawPos);
+	//colorTexture.draw(colorDrawPos);
+	
 	for (int body = 0; body < 6; body++)
 	{
 		if (!bodies[body])
@@ -100,7 +98,7 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 			{
 				//Println(L"distance:" + ToString(handDiff));
 
-				if (Abs(handDiff[body]) > 0.35)
+				if (Abs(handDiff[body]) > 0.35 || bodies[body]->rightHand == HandState::Open)
 				{
 					Circle(currentBodyPos[body][joint].xy() + depthDrawPos, 10).draw(Palette::Red);
 				}
