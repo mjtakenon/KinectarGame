@@ -87,6 +87,7 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 			continue;
 		}
 
+
 		for (int joint = 0; joint < jointsNum; joint++)
 		{
 			if (bodies[body]->joints[joint].trackingState == TrackingState::NotTracked)
@@ -97,7 +98,7 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 			if (joint == V2JointType::HandRight)
 			{
 				//Println(L"distance:" + ToString(handDiff));
-
+				//Žè‚ªŠJ‚¢‚Ä‚é‚Æ‚«‚Í‰¹‚ðŽ~‚ß‚½‚¢‚¯‚Ç¸“x“I‚É‚«‚Â‚¢
 				if (Abs(handDiff[body]) > 0.35 || bodies[body]->rightHand == HandState::Open)
 				{
 					Circle(currentBodyPos[body][joint].xy() + depthDrawPos, 10).draw(Palette::Red);
@@ -113,7 +114,7 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 			}
 			else
 			{
-				Circle(currentBodyPos[body][joint].xy() + depthDrawPos, 10).draw(Palette::White);
+				Circle(currentBodyPos[body][joint].xy() + depthDrawPos, 5).draw(Palette::White);
 			}
 
 			bodyPos.push_back(currentBodyPos);
@@ -141,7 +142,7 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 		//‰~‚É’Ç]‚·‚éŽè‚ÌŠp“x‚Ì‰~
 		if (handAngle.size() > 2)
 		{
-			if (Abs(handDiff[body]) > 0.35)
+			if (Abs(handDiff[body]) > 0.35 || bodies[body]->rightHand == HandState::Open)
 			{
 				Circle(base + Vec2(Sin(handAngle[body][handAngle[body].size() - 1] + Pi), Cos(handAngle[body][handAngle[body].size() - 1] + Pi)) * 150, 15).draw(Palette::Red);
 			}
@@ -152,5 +153,23 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 
 		}
 	}
+}
 
+vector<HandState> KinectManager::getHandState()
+{
+	vector<HandState> state = vector<HandState>(6);
+
+	for (int body = 0; body < 6; body++)
+	{
+		if (!bodies[body])
+		{
+			state[body] = HandState::Unknown;
+		}
+		else
+		{
+			state[body] = bodies[body]->rightHand;
+		}
+	}
+
+	return state;
 }

@@ -241,9 +241,8 @@ void Kinectar::drawGuitar()
 			b = 255;
 		}
 		int thick = 3 + ((255 - b) / 51);
-		Str[i].draw(thick, {255,255,b,255});
+		Str[i].draw(thick, { 255,255,b,255 });
 	}
-	
 
 	for (int i = 0; i < Flet.size(); i++)
 	{
@@ -288,7 +287,8 @@ void Kinectar::playSound()
 	{
 		vector<double> ha = handAngles[body];
 	
-		if (Abs(m_KinectManager->getHandDiff()[body]) > 0.35)
+		//手が肘から一定以上手前に離れているか、手が開いていれば音を出さないようにしたい
+		if (Abs(m_KinectManager->getHandDiff()[body]) > 0.35 || m_KinectManager->getHandState()[body] == HandState::Open)
 		{
 			return;
 		}

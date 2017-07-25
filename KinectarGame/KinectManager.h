@@ -13,8 +13,11 @@ public:
 	void Update();
 	void Draw(vector<int> soundTime, vector<double> fletAngle);
 
-	vector<double> getHandDiff() { return handDiff; };
+	vector<double>	getHandDiff() { return handDiff; };
+	vector<HandState>	getHandState();
+		
 	vector<vector<double>> getHandAngle() { return handAngle; };
+
 
 private:
 
