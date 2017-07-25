@@ -22,6 +22,15 @@ void Game::init()
 		m_Bars.push_back(Bar(pos, size, Palette::White));
 	}
 	
+	m_GuitarStrings = vector<GuitarString>();
+
+	for (auto n = 0; n < m_data->string; n++)
+	{
+		Vec2 pos = Vec2(0, m_Bars[n].getPosition().y);
+		Vec2 size = Vec2(Window::Width(), 2);
+		m_GuitarStrings.push_back(GuitarString(pos, size, Palette::White));
+	}
+
 	m_Music = new Music(m_data->musicPath);
 	m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
 	
@@ -49,6 +58,11 @@ void Game::update()
 		m_Bars[n].Update(state);
 	}
 
+	for (auto n = 0; n < m_GuitarStrings.size(); n++)
+	{
+		m_GuitarStrings[n].Update(m_Kinectar->getButtonState().first[n]);
+	}
+
 	m_NotesManager->Update(m_Kinectar->getButtonState(), m_Music->getPlayingSample());
 
 }
@@ -62,6 +76,11 @@ void Game::draw() const
 	for (auto n = 0; n < m_Bars.size(); n++)
 	{
 		m_Bars[n].Draw();
+	}
+
+	for (auto n = 0; n < m_GuitarStrings.size(); n++)
+	{
+		m_GuitarStrings[n].Draw();
 	}
 
 	m_NotesManager->Draw();

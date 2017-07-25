@@ -6,6 +6,7 @@
 #include "GameData.h"
 
 #include "Bar.h"
+#include "GuitarString.h"
 #include "Music.h"
 #include "Score.h"
 #include "NotesManager.h"
@@ -20,7 +21,9 @@ struct Game : SceneManager<String, GameData>::Scene
 	void draw() const override;
 
 	NotesManager*	m_NotesManager;
+	
 	vector<Bar>	m_Bars;
+	vector<GuitarString> m_GuitarStrings;
 
 	Music*	m_Music;
 	Score*	m_Score;

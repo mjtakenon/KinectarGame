@@ -2,6 +2,9 @@
 
 GameManager::GameManager()
 {
+	Window::Resize(1366, 768);
+
+
 	scene = new SceneManager<String, GameData>(SceneManagerOption::ShowSceneName);
 
 	scene->setFadeColor(Palette::Black);
@@ -11,8 +14,6 @@ GameManager::GameManager()
 	scene->add<Game>(L"Game");
 
 	scene->init(L"Game");
-	
-	Window::Resize(1366, 768);
 }
 
 GameManager::~GameManager()
