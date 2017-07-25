@@ -138,6 +138,9 @@
     <ClCompile Include="HitMarker.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
     </ClCompile>
+    <ClCompile Include="Bar.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -407,6 +410,9 @@
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
     <ClInclude Include="HItMarker.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Bar.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>

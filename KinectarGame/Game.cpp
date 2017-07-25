@@ -36,7 +36,7 @@ void Game::init()
 	m_Music = new Music(m_data->musicPath);
 	m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
 	
-	m_NotesManager = new NotesManager(m_Score->getNotes(), m_HitMarkers, m_Music->getSamplingRate());
+	m_NotesManager = new NotesManager(m_Score, m_HitMarkers, m_Music->getSamplingRate());
 
 	m_PointManager = new PointManager();
 
@@ -77,6 +77,7 @@ void Game::update()
 void Game::draw() const
 {
 	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
+	Println(m_Kinectar->getSoundTime());
 
 	m_Kinectar->Draw();
 

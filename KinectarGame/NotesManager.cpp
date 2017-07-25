@@ -1,8 +1,8 @@
 #include "NotesManager.h"
 
-NotesManager::NotesManager(list<Note> notes, vector<HitMarker> HitMarkers, int samplingRate)
+NotesManager::NotesManager(Score* score, vector<HitMarker> HitMarkers, int samplingRate)
 {
-	m_Notes = notes;
+	m_Notes = score->getNotes();
 	m_HitMarkers = HitMarkers;
 	m_SamplingRate = samplingRate;
 
@@ -29,6 +29,26 @@ NotesManager::NotesManager(list<Note> notes, vector<HitMarker> HitMarkers, int s
 	}
 
 	m_HitEffects = list<HitEffect>();
+	m_Bars = list<Bar>();
+
+	for (auto itr = 0; (m_SamplingRate / score->getBPM()) * score->getBlank() + (60 / score->getBPM() * m_SamplingRate) * (itr-10) <= (--m_Notes.end())->getSample(); itr++)
+	{
+		int sample = (m_SamplingRate / score->getBPM()) * score->getBlank() + (60 / score->getBPM() * m_SamplingRate) * itr;
+
+		Vec2 pos = Vec2(10, m_HitMarkers.begin()->getPosition().y);
+
+		Vec2 size = Vec2(1, m_HitMarkers.begin()->getSize().y * (6 - 1) + (6 - 1) * 5);
+
+		Color color = Palette::Wheat;
+
+		if (itr % 4 == 0)
+		{
+			size.x = size.x * 2;
+			color = Palette::Aquamarine;
+		}
+		
+		m_Bars.push_back(Bar(pos, size, Vec2(5, 0), pos, color, sample));
+	}
 }
 
 NotesManager::~NotesManager()
@@ -54,6 +74,19 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 		itr++;
 	}
 
+	//¬ßü
+	for (auto itr = m_Bars.begin(); itr != m_Bars.end(); )
+	{
+		itr->Update(sample, m_SamplingRate, m_HitMarkers.begin()->getPosition());
+
+		if (!itr->isVisible())
+		{
+			itr = m_Bars.erase(itr);
+			continue;
+		}
+		itr++;
+	}
+
 	for (auto itr = m_HitEffects.begin(); itr != m_HitEffects.end(); )
 	{
 		itr->Update();
@@ -65,7 +98,6 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 		}
 		itr++;
 	}
-
 
 	vector<int> pushedFlet(6,0);
 
@@ -119,12 +151,15 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 			}
 		}
 	}
-
-	Println(input);
 }
 
 void NotesManager::Draw()
 {
+	for (auto itr = m_Bars.begin(); itr != m_Bars.end(); itr++)
+	{
+		itr->Draw();
+	}
+
 	for (auto itr = m_HitEffects.begin(); itr != m_HitEffects.end(); itr++)
 	{
 		itr->Draw();
