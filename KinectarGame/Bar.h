@@ -16,6 +16,8 @@ public:
 	void Update(vector<bool> buttonState);
 	void Draw() const;
 
+	Vec2 getSize() { return m_Size; };
+
 private:
 	Vec2 m_Size;
 	Color m_Color;

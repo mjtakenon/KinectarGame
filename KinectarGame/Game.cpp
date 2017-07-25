@@ -63,7 +63,7 @@ void Game::update()
 		m_GuitarStrings[n].Update(m_Kinectar->getSoundTime()[n]);
 	}
 
-	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Music->getPlayingSample());
+	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Kinectar->getPushedState(), m_Music->getPlayingSample());
 
 }
 

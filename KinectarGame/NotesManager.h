@@ -6,6 +6,7 @@
 
 #include "Note.h"
 #include "Bar.h"
+#include "HitEffect.h"
 
 using namespace std;
 
@@ -15,14 +16,16 @@ public:
 	NotesManager(list<Note> notes,vector<Bar> bars, int samplingRate);
 	~NotesManager();
 	
-	void Update(vector<int> input, int sample);
+	void Update(vector<int> input, vector<vector<bool>> pushed, int sample);
 	void Draw();
 
 private:
 	list<Note> m_Notes;
 
 	vector<Bar> m_Bars;
-	
+
+	list<HitEffect> m_HitEffects;
+
 
 	int m_SamplingRate;
 

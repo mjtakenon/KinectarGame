@@ -53,4 +53,5 @@ void Bar::Update(vector<bool> buttonState)
 void Bar::Draw() const
 {
 	Rect(m_Position.x - (m_Size.x / 2), m_Position.y - (m_Size.y / 2), m_Size.x, m_Size.y).draw(m_Color);
+	Rect(m_Position.x, m_Position.y - (m_Size.y / 2), 1, m_Size.y).draw(Palette::Black);
 }

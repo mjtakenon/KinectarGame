@@ -28,6 +28,8 @@ NotesManager::NotesManager(list<Note> notes, vector<Bar> bars, int samplingRate)
 
 		itr->setPosition(Vec2(m_Bars[itr->getString()].getPosition().x + m_VisibleFrame*itr->getSpeed().x , m_Bars[itr->getString()].getPosition().y));
 	}
+
+	m_HitEffects = list<HitEffect>();
 }
 
 NotesManager::~NotesManager()
@@ -35,7 +37,7 @@ NotesManager::~NotesManager()
 
 }
 
-void NotesManager::Update(vector<int> input, int sample)
+void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sample)
 {
 	//inputからNotesの探索、適切なノーツの削除、新しいノーツの出現とか
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
@@ -52,6 +54,30 @@ void NotesManager::Update(vector<int> input, int sample)
 		itr++;
 	}
 
+	for (auto itr = m_HitEffects.begin(); itr != m_HitEffects.end(); )
+	{
+		itr->Update();
+		
+		if (!itr->isVisible())
+		{
+			itr = m_HitEffects.erase(itr);
+			continue;
+		}
+		itr++;
+	}
+
+
+	vector<int> pushedFlet(6,0);
+
+	for (auto n = 0; n < pushed.size(); n++)
+	{
+		for (auto m = 0; m < pushed[n].size(); m++)
+		if (pushed[n][m])
+		{
+			pushedFlet[n] = m;
+		}
+	}
+
 	//当たり判定
 	for (auto n = 0; n < input.size(); n++)
 	{
@@ -59,7 +85,7 @@ void NotesManager::Update(vector<int> input, int sample)
 		{
 			for (auto itr = m_Notes.begin(); itr != m_Notes.end();)
 			{
-				if (itr->getString() != n)
+				if (itr->getString() != n || itr->getFlet() != pushedFlet[n])
 				{
 					itr++;
 					continue;
@@ -73,17 +99,17 @@ void NotesManager::Update(vector<int> input, int sample)
 					continue;
 				}
 				
-				if (diffSample <= m_PerfectSample) //Perfect
+				if (diffSample <= m_PerfectSample && diffSample >= -m_PerfectSample) //Perfect
 				{
-					
+					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Yellow));
 				}
-				else if (diffSample <= m_GoodSample) //Good
+				else if (diffSample <= m_GoodSample && diffSample >= -m_GoodSample) //Good
 				{
-
+					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Green));
 				}
 				else //Hit
 				{
-
+					m_HitEffects.push_back(HitEffect(m_Bars[n].getPosition(), Vec2(100, m_Bars[n].getSize().y), Palette::Blue));
 				}
 				
 				itr = m_Notes.erase(itr);
@@ -98,6 +124,11 @@ void NotesManager::Update(vector<int> input, int sample)
 
 void NotesManager::Draw()
 {
+	for (auto itr = m_HitEffects.begin(); itr != m_HitEffects.end(); itr++)
+	{
+		itr->Draw();
+	}
+
 	for (auto itr = m_Notes.begin(); itr != m_Notes.end(); itr++)
 	{
 		itr->Draw();

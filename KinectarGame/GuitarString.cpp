@@ -13,13 +13,13 @@ GuitarString::~GuitarString()
 
 void GuitarString::Update(int soundTime)
 {
-	if (soundTime == 0)
+	if (soundTime == 0 || soundTime * 2 > 255)
 	{
 		m_Color = Palette::White;
 	}
 	else
 	{
-		m_Color = Color(255, 255, 0 + soundTime * 3);
+		m_Color = Color(255, 255, 0 + soundTime * 2);
 	}
 }
 
