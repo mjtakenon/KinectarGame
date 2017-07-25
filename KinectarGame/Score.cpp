@@ -18,18 +18,18 @@ Score::Score(String path,int SamplingRate)
 		{
 			mode = 1;
 		}
-		else if (line.includes(L"Blank:"))
+		else if (line.includes(L"BLANK:"))
 		{
 			mode = 2;
 		}
-		else if (line.includes(L"note:"))
+		else if (line.includes(L"NOTE:"))
 		{
 			mode = 0;
 		}
 		else
 		{
 			vector<String> part;
-			int time = (SamplingRate / m_BPM) * m_Blank;
+			int sample = (SamplingRate / m_BPM) * m_Blank;
 			int flet = 0;
 			int string = 0;
 
@@ -37,21 +37,21 @@ Score::Score(String path,int SamplingRate)
 			{
 				case 0:
 					part = line.split(':')[0].split(',');
-					time += Parse<int>(part[0]) * 4 * (SamplingRate / m_BPM);
-					time += Parse<int>(part[1]) * (SamplingRate / m_BPM);
-					time += Parse<int>(part[2]) * ((SamplingRate / m_BPM) / 2000);
+					sample += Parse<int>(part[0]) * 4 * (60 / m_BPM * SamplingRate);
+					sample += Parse<int>(part[1]) * (60 / m_BPM * SamplingRate);
+					sample += Parse<int>(part[2]) * (60 / m_BPM * SamplingRate) / 2000;
 					
 					part = line.split(':')[1].split(',');
 					string = Parse<int>(part[0]);
 					flet = Parse<int>(part[1]);
 
-					m_Notes.push_back(Note(Vec2(100, 100), string, flet, time, Vec2(10, 10), Vec2(10, 10)));
+					m_Notes.push_back(Note(Vec2(0,0), string, flet, sample, Vec2(0,0), Vec2(0,0)));
 					break;
 				case 1:
-					m_BPM = Parse<int>(line);
+					m_BPM = Parse<double>(line);
 					break;
 				case 2:
-					m_Blank = Parse<int>(line);
+					m_Blank = Parse<double>(line);
 					break;
 			}
 		}

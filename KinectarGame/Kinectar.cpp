@@ -134,7 +134,7 @@ void Kinectar::Update()
 	buttonState = getButtonState(buttonState);
 	m_KinectManager->Update();
 
-	drawGuitar();
+	//drawGuitar();
 }
 
 void Kinectar::Draw()

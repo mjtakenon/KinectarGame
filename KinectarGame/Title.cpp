@@ -12,12 +12,9 @@ void Title::update()
 	{
 		changeScene(L"Menu", 500);
 	}
-
-	// 共有データにアクセスできる
-	//m_data->path;
 }
 
 void Title::draw() const
 {
-	//font(L"Title").drawCenter(Window::Center());
+
 }

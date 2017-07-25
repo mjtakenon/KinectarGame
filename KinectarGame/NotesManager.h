@@ -12,12 +12,21 @@ using namespace std;
 class NotesManager
 {
 public:
-	NotesManager(list<Note> notes);
+	NotesManager(list<Note> notes,Bar bar, int samplingRate);
 	~NotesManager();
 	
-	void Update(pair<vector<int>,vector<int>> input,const Bar bar);
+	void Update(pair<vector<int>,vector<int>> input, int sample, Bar bar);
 	void Draw();
 
 private:
 	list<Note> m_Notes;
+
+	int m_SamplingRate;
+
+	int m_PrepareFrame;
+
+	int m_VisibleSample;
+	int m_HitSample;
+
+
 };

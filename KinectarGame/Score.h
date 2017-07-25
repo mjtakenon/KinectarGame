@@ -22,6 +22,8 @@ public:
 private:
 	String m_Path;
 	list<Note> m_Notes;
+	//BPMŒÅ’è
+	//‰Â•Ï‚Æ‚·‚é‚È‚ç‰Â•Ï‚ÌŠÔ‚Æ‰Â•ÏŒã‚Ìƒeƒ“ƒ|‚ğ”z—ñ‚Å•Û‚©‚È pair<vector<int>,vector<int>>
 	double m_BPM;
 	double m_Blank;
 };

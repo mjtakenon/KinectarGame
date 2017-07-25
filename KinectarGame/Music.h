@@ -5,21 +5,17 @@
 class Music
 {
 public:
-	Music(String path,double BPM);
+	Music(String path);
 	~Music();
 	
-	double	getPlayingPosition();
-	double	getBPM() { return m_BPM; };
+	int		getPlayingSample();
 	int		getSamplingRate() { return m_Sound->samplingRate(); };
-
-	void play();
+	bool	isPlayed() { return m_isPlayed; };
+	void	play();
 
 private:
 
-	String m_Path;
-	Sound* m_Sound;
-
-	//BPMŒÅ’è
-	//‰Â•Ï‚Æ‚·‚é‚È‚ç‰Â•Ï‚ÌŠÔ‚Æ‰Â•ÏŒã‚Ìƒeƒ“ƒ|‚ğ”z—ñ‚Å•Û‚©‚È pair<vector<int>,vector<int>>
-	double 	m_BPM;
+	String	m_Path;
+	Sound*	m_Sound;
+	bool	m_isPlayed;
 };
