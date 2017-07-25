@@ -46,6 +46,8 @@ void NotesManager::Update(pair<vector<int>,vector<int>> input, int sample)
 		}
 		itr++;
 	}
+
+	Println(input.first, input.second);
 }
 
 void NotesManager::Draw()

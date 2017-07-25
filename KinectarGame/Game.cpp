@@ -9,7 +9,7 @@ void Game::init()
 	m_data->string = 6;
 	m_data->flet = 5;
 	
-	m_BarSize = Vec2(20,200);
+	m_BarSize = Vec2(20,250);
 	m_BarPosition = Vec2(100, 100);
 
 	m_Kinectar = new Kinectar();
@@ -17,8 +17,8 @@ void Game::init()
 	m_Bars = vector<Bar>();
 	for (auto n = 0; n < m_data->string; n++)
 	{
-		Vec2 pos = Vec2(m_BarPosition.x, m_BarPosition.y + (m_BarSize.y / m_data->string) * n);
-		Vec2 size = Vec2(m_BarSize.x, m_BarSize.y / m_Bars.size());
+		Vec2 pos = Vec2(m_BarPosition.x, m_BarPosition.y + (m_BarSize.y / m_data->string) * n + n*5);
+		Vec2 size = Vec2(m_BarSize.x, m_BarSize.y / m_data->string);
 		m_Bars.push_back(Bar(pos, size, Palette::White));
 	}
 	
@@ -41,8 +41,8 @@ void Game::update()
 	vector<vector<bool>> states = m_Kinectar->getPushedState();
 	for (auto n = 0; n < m_Bars.size(); n++)
 	{
-		vector<bool> state = vector<bool>(6);
-		for (auto m = 0; m < states.size(); m++)
+		vector<bool> state = vector<bool>(5);
+		for (auto m = 0; m < state.size(); m++)
 		{
 			state[m] = states[m][n];
 		}
@@ -56,6 +56,7 @@ void Game::update()
 void Game::draw() const
 {
 	Println(m_Kinectar->getButtonState().first, m_Kinectar->getButtonState().second);
+	Println(m_Kinectar->getPushedState());
 	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
 
 	for (auto n = 0; n < m_Bars.size(); n++)

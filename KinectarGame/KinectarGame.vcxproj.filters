@@ -129,6 +129,9 @@
     <ClCompile Include="KinectManager.cpp">
       <Filter>ソース ファイル\Kinectar</Filter>
     </ClCompile>
+    <ClCompile Include="GuitarString.cpp">
+      <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -390,6 +393,9 @@
     </ClInclude>
     <ClInclude Include="Guitar.h">
       <Filter>ヘッダー ファイル\Kinectar</Filter>
+    </ClInclude>
+    <ClInclude Include="GuitarString.h">
+      <Filter>ヘッダー ファイル\Scenes\Game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

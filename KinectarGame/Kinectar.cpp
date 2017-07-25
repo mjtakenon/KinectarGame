@@ -134,7 +134,7 @@ void Kinectar::Update()
 	buttonState = getButtonState(buttonState);
 	m_KinectManager->Update();
 
-	//drawGuitar();
+	playSound();
 }
 
 void Kinectar::Draw()
@@ -143,7 +143,7 @@ void Kinectar::Draw()
 	
 	m_KinectManager->Draw(soundTime, fletAngle);
 
-	playSound();
+	drawGuitar();
 	
 	//Print(soundTime, L"\n");
 }
