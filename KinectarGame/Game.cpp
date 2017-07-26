@@ -3,11 +3,7 @@
 
 void Game::init()
 {
-	m_data->musicPath = L"t’†…‰j.wav";
-	m_data->scorePath = L"t’†…‰j.data";
-	
-	m_data->string = 6;
-	m_data->flet = 5;
+	m_PracticeMode = m_data->practiceMode;
 
 	m_StringMargin = 5;
 	
@@ -33,24 +29,68 @@ void Game::init()
 		m_GuitarStrings.push_back(GuitarString(pos, size, Palette::White));
 	}
 
-	m_Music = new Music(m_data->musicPath);
-	m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
 	
-	m_NotesManager = new NotesManager(m_Score, m_HitMarkers, m_Music->getSamplingRate());
+	if (m_PracticeMode)
+	{
 
-	m_PointManager = new PointManager();
+	}
+	else
+	{
+		m_Music = new Music(m_data->musicPath);
+		m_Score = new Score(m_data->scorePath, m_Music->getSamplingRate());
+
+		m_NotesManager = new NotesManager(m_Score, m_HitMarkers, m_Music->getSamplingRate());
+	}
+	m_PointManager = new PointManager(Vec2(Window::Width() - 90, Window::Height() / 3 * 2));
 
 	m_EndLine = Vec2(m_GuitarStrings.begin()->getPosition());
 
+	font(15);
 }
 
 void Game::update()
 {
+	//debug mode
+	//m_Music->play();
+
 	//‹ÈÄ¶ŠJŽn‘O‚¾‚Á‚½‚ç
-	if (!m_Music->isPlayed())
+	if (!m_PracticeMode)
 	{
-		m_Music->play();
+		if (!m_Music->isPlayed())
+		{
+			bool anyPushed = false;
+			vector<vector<bool>> state = m_Kinectar->getPushedState();
+			for (auto n = 0; n < state.size(); n++)
+			{
+				for (auto m = 0; m < state[n].size(); m++)
+				{
+					if (state[n][m])
+					{
+						anyPushed = true;
+					}
+				}
+			}
+
+			if (m_Kinectar->hasValidBody() && anyPushed)
+			{
+				m_Music->play();
+			}
+		}
 	}
+
+	if (!m_PracticeMode)
+	{
+		//P‚ª‰Ÿ‚³‚ê‚½‚ç
+		if (Input::KeyP.clicked && m_Music->isPlayed())
+		{
+			m_Music->pause();
+		}
+		else if (Input::KeyP.pressed && !m_Music->isPlayed())
+		{
+			m_Music->restart();
+		}
+	}
+
 
 	m_Kinectar->Update();
 	
@@ -70,13 +110,19 @@ void Game::update()
 		m_GuitarStrings[n].Update(m_Kinectar->getSoundTime()[n]);
 	}
 
-	m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Kinectar->getPushedState(), m_Music->getPlayingSample(), m_PointManager);
+	if (!m_PracticeMode)
+	{
+		m_NotesManager->Update(m_Kinectar->getSoundTime(), m_Kinectar->getPushedState(), m_Music->getPlayingSample(), m_PointManager);
+	}
 	m_PointManager->Update();
 }
 
 void Game::draw() const
 {
-	Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
+	if(!m_PracticeMode)
+	{
+		Println((double)m_Music->getPlayingSample()/m_Music->getSamplingRate());
+	}
 	Println(m_Kinectar->getSoundTime());
 
 	m_Kinectar->Draw();
@@ -96,5 +142,23 @@ void Game::draw() const
 	}
 
 	m_PointManager->Draw();
-	m_NotesManager->Draw();
+
+	if (!m_PracticeMode)
+	{
+		m_NotesManager->Draw();
+	}
+
+	if (!m_PracticeMode)
+	{
+		if (!m_Kinectar->hasValidBody() && !m_Music->isPlayed())
+		{
+			Rect(0, 0, Window::Size()).draw(Color(127, 127, 127, 127));
+			font(L"Kinect‚É”FŽ¯‚³‚ê‚éˆÊ’u‚ÖˆÚ“®‚µ‚Ä‚­‚¾‚³‚¢").drawCenter(Window::Width()/2,Window::Height()/2);
+		}
+		else if(m_Kinectar->hasValidBody() && !m_Music->isPlayed())
+		{
+			Rect(0, 0, Window::Size()).draw(Color(127, 127, 127, 127));
+			font(L"‰½‚©ƒ{ƒ^ƒ“‚ð‰Ÿ‚µ‚Ä‚­‚¾‚³‚¢").drawCenter(Window::Width() / 2, Window::Height() / 2);
+		}
+	}
 }

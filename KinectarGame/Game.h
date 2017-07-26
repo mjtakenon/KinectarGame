@@ -38,4 +38,8 @@ struct Game : SceneManager<String, GameData>::Scene
 	Vec2 m_HitMarkerPosition;
 
 	Vec2 m_EndLine;
+
+	Font font;
+
+	bool m_PracticeMode;
 };

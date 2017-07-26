@@ -150,7 +150,6 @@ void KinectManager::Draw(vector<int> soundTime, vector<double> fletAngle)
 			{
 				Circle(base + Vec2(Sin(handAngle[body][handAngle[body].size() - 1] + Pi), Cos(handAngle[body][handAngle[body].size() - 1] + Pi)) * 150, 15).draw(Palette::Lightgreen);
 			}
-
 		}
 	}
 }
@@ -172,4 +171,16 @@ vector<HandState> KinectManager::getHandState()
 	}
 
 	return state;
+}
+
+bool KinectManager::hasValidBody()
+{
+	for (int body = 0; body < 6; body++)
+	{
+		if (bodies[body])
+		{
+			return true;
+		}
+	}
+	return false;
 }

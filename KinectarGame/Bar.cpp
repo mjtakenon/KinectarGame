@@ -13,17 +13,15 @@ Bar::Bar(Vec2 position, Vec2 size, Vec2 speed, Vec2 erasePosition, Color color, 
 
 Bar::~Bar()
 {
-
 }
 
 void Bar::Update(double currentSample, int samplingRate, Vec2 hitMarkerPosition)
 {
-	if (m_ErasePosition.x >= m_Position.x)
+	if (m_Position.x <= m_ErasePosition.x)
 	{
 		m_Visible = false;
 	}
-
-	if (m_Position.x <= Window::Width())
+	else if (m_Position.x <= Window::Width())
 	{
 		m_Visible = true;
 	}

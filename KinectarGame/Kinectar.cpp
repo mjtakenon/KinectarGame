@@ -344,3 +344,7 @@ void Kinectar::playSound()
 	}
 }
 
+bool Kinectar::hasValidBody()
+{
+	return m_KinectManager->hasValidBody();
+}

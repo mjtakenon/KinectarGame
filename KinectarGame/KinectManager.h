@@ -18,6 +18,8 @@ public:
 		
 	vector<vector<double>> getHandAngle() { return handAngle; };
 
+	bool hasValidBody();
+
 
 private:
 

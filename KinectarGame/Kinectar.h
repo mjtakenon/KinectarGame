@@ -22,6 +22,7 @@ public:
 	vector<int> getSoundTime() { return soundTime; };
 	vector<vector<bool>> getPushedState() { return buttonState; };
 
+	bool hasValidBody();
 
 private:
 

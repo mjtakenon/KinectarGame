@@ -8,4 +8,6 @@ struct GameData
 
 	int string;
 	int flet;
+
+	bool practiceMode;
 };

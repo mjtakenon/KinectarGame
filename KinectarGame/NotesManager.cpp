@@ -36,9 +36,7 @@ NotesManager::NotesManager(Score* score, vector<HitMarker> HitMarkers, int sampl
 		int sample = (m_SamplingRate / score->getBPM()) * score->getBlank() + (60 / score->getBPM() * m_SamplingRate) * itr;
 
 		Vec2 pos = Vec2(10, m_HitMarkers.begin()->getPosition().y);
-
 		Vec2 size = Vec2(1, m_HitMarkers.begin()->getSize().y * (6 - 1) + (6 - 1) * 5);
-
 		Color color = Palette::Wheat;
 
 		if (itr % 4 == 0)
@@ -79,7 +77,7 @@ void NotesManager::Update(vector<int> input, vector<vector<bool>> pushed, int sa
 	{
 		itr->Update(sample, m_SamplingRate, m_HitMarkers.begin()->getPosition());
 
-		if (!itr->isVisible())
+		if (!itr->isVisible() && itr->getPosition().x <= 0)
 		{
 			itr = m_Bars.erase(itr);
 			continue;

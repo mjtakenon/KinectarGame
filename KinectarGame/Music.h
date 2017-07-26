@@ -12,6 +12,8 @@ public:
 	int		getSamplingRate() { return m_Sound->samplingRate(); };
 	bool	isPlayed() { return m_isPlayed; };
 	void	play();
+	void	pause();
+	void	restart();
 
 private:
 

@@ -88,6 +88,9 @@
     <Filter Include="ヘッダー ファイル\misc">
       <UniqueIdentifier>{45ee0bcb-9605-4579-9658-815250e4b1f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\misc">
+      <UniqueIdentifier>{b1f26104-16ba-4240-86af-177159ff6f61}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -140,6 +143,9 @@
     </ClCompile>
     <ClCompile Include="Bar.cpp">
       <Filter>ソース ファイル\Scenes\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="RectButton.cpp">
+      <Filter>ソース ファイル\misc</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -414,6 +420,9 @@
     </ClInclude>
     <ClInclude Include="Bar.h">
       <Filter>ヘッダー ファイル\Scenes\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="RectButton.h">
+      <Filter>ヘッダー ファイル\misc</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

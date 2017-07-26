@@ -3,17 +3,18 @@
 GameManager::GameManager()
 {
 	Window::Resize(1366, 768);
+	Window::SetStyle(WindowStyle::Sizeable);
 
-
-	scene = new SceneManager<String, GameData>(SceneManagerOption::ShowSceneName);
+	scene = new SceneManager<String, GameData>();
 
 	scene->setFadeColor(Palette::Black);
 
 	scene->add<Title>(L"Title");
 	scene->add<Menu>(L"Menu");
 	scene->add<Game>(L"Game");
+	scene->add<Game>(L"Practice");
 
-	scene->init(L"Game");
+	scene->init(L"Title");
 }
 
 GameManager::~GameManager()

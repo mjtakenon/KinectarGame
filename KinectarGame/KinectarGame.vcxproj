@@ -177,6 +177,7 @@
     <ClCompile Include="Note.cpp" />
     <ClCompile Include="NotesManager.cpp" />
     <ClCompile Include="PointManager.cpp" />
+    <ClCompile Include="RectButton.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Title.cpp" />
   </ItemGroup>
@@ -260,6 +261,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bar.h" />
+    <ClInclude Include="RectButton.h" />
     <ClInclude Include="HItMarker.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameData.h" />

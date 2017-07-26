@@ -6,7 +6,7 @@ class PointManager
 {
 public:
 
-	PointManager();
+	PointManager(Vec2 position);
 	~PointManager();
 
 	void Update();
@@ -32,4 +32,6 @@ private:
 	int m_LostCount;
 
 	Font font;
+
+	Vec2 m_Position;
 };

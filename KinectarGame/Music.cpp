@@ -9,7 +9,6 @@ Music::Music(String path)
 	{
 		MessageBox::Show(L"音楽ファイルが見つかりませんでした.");
 	}
-	m_Sound->getTempo();
 	m_isPlayed = false;
 }
 
@@ -24,6 +23,18 @@ int Music::getPlayingSample()
 }
 
 void Music::play()
+{
+	m_Sound->play();
+	m_isPlayed = true;
+}
+
+void Music::pause()
+{
+	m_Sound->pause();
+	m_isPlayed = false;
+}
+
+void Music::restart()
 {
 	m_Sound->play();
 	m_isPlayed = true;
