@@ -250,6 +250,7 @@
     <None Include="Engine\Shaders\D3D11\Sprite.vs" />
     <None Include="Engine\Shaders\D3D11\Sprite_Font.ps" />
     <None Include="Engine\Shaders\D3D11\Sprite_Stencil.ps" />
+    <None Include="PBR飛行計画.data" />
     <None Include="春中水泳.data" />
   </ItemGroup>
   <ItemGroup>

@@ -21,7 +21,7 @@ struct Game : SceneManager<String, GameData>::Scene
 
 	void draw() const override;
 
-	NotesManager*	m_NotesManager;
+	NotesManager* m_NotesManager;
 	PointManager* m_PointManager;
 
 	vector<HitMarker>	m_HitMarkers;

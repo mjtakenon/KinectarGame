@@ -77,10 +77,7 @@ Kinectar::Kinectar()
 		fletAngle[i] = Pi - (Pi / 3) - (Pi / 30 * i);// +(Pi / 12);
 	}
 
-	
-
 	client.connect(serverAddress, port);
-
 
 	m_KinectManager = new KinectManager(fletMax);
 
@@ -340,7 +337,6 @@ void Kinectar::playSound()
 				soundTime[i] = 1;
 			}
 		}
-
 	}
 }
 

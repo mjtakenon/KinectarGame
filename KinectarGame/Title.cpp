@@ -24,8 +24,8 @@ void Title::update()
 	{
 		m_data->practiceMode = false;
 
-		m_data->musicPath = L"t’†…‰j.wav";
-		m_data->scorePath = L"t’†…‰j.data";
+		m_data->musicPath = L"PBR”òsŒv‰æ.wav";
+		m_data->scorePath = L"PBR”òsŒv‰æ.data";
 
 		m_data->string = 6;
 		m_data->flet = 5;
@@ -43,7 +43,7 @@ void Title::update()
 		m_data->string = 6;
 		m_data->flet = 5;
 
-		changeScene(L"Practice", 500);
+		changeScene(L"Game", 500);
 	}
 
 	if (m_SettingButton->isClicked())

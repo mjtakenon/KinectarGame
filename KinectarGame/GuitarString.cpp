@@ -23,7 +23,6 @@ void GuitarString::Update(int soundTime)
 	}
 }
 
-
 void GuitarString::Draw() const
 {
 	Rect(m_Position.x, m_Position.y - (m_Size.y / 2), m_Size.x, m_Size.y).draw(m_Color);

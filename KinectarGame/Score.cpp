@@ -26,6 +26,10 @@ Score::Score(String path,int SamplingRate)
 		{
 			mode = 0;
 		}
+		else if (line == L"")
+		{
+
+		}
 		else
 		{
 			vector<String> part;
