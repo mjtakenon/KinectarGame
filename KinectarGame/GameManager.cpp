@@ -5,6 +5,8 @@ GameManager::GameManager()
 	Window::Resize(1366, 768);
 	Window::SetStyle(WindowStyle::Sizeable);
 
+	Window::SetTitle(L"KinectarGame");
+
 	scene = new SceneManager<String, GameData>();
 
 	scene->setFadeColor(Palette::Black);
